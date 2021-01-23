@@ -3,6 +3,6 @@ Name=sapling-gui
 Icon=sapling-gui
 Type=Application
 Categories=Development
-Exec=env LD_LIBRARY_PATH=/usr/local/lib sapling-gui
+Exec=sapling-gui
 StartupNotify=false
 Terminal=false

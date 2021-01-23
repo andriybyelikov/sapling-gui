@@ -1,5 +1,7 @@
 CXX      := g++
-CXXFLAGS := -pipe `wx-config --libs core,richtext` `wx-config --cxxflags`
+CXXFLAGS := -pipe `wx-config --static=yes --cxxflags`
+	
+LDFLAGS := `wx-config --static=yes --libs all`
 
 SRCDIR   := src
 OBJDIR   := obj
@@ -13,7 +15,7 @@ TARGET   := sapling-gui
 .PHONY: clean install debug install
 
 $(TARGET): $(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $^ -o $@
